@@ -1,6 +1,6 @@
 {
     "name": "damianb/message-center",
-    "description": "It allows to register eventSource components on different channels and dispatches events through channels to registered listeners",
+    "description": "It allows to register eventSource components on different channels and dispatches events throughout channels to registered listeners",
     "authors": [
         {
             "name": "Damian Bistram",
