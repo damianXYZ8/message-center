@@ -1,2 +1,2 @@
 # message-center
-MessageCenter is a mechanism to register and dispatch events
+MessageCenter is a simple mechanism to register and dispatch events
