@@ -27,7 +27,7 @@
         }
     },
     "scripts": {
-        "code-siffer": "./vendor/bin/phpcs",
+        "code-sniffer": "./vendor/bin/phpcs",
         "test": "phpunit"
     } 
 }

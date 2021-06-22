@@ -36,7 +36,7 @@ class EventSource implements IEventSource
     {
         if (!isset($channelName)) {
             $channelName = self::C_DEFAULT_CHANNEL;
-        }    
+        }
         if (false === $this->isEventListenerRegistered($listener, $channelName)) {
             throw new \Exception('Listener is not registered in ChannelName: '.$channelName);
         }
