@@ -1,0 +1,9 @@
+Message Center (Tests\MessageCenter\MessageCenter)
+ [x] Initialize message center
+ [x] It adds and checks listener registration in channel
+ [x] It adds one listener to channel and checks channel creation
+ [x] It removes listener from channel
+ [x] It adds listeners to two channels and then removes all listeners from channel
+ [x] It adds listeners to default channel
+ [x] It removes listeners from default channel
+
