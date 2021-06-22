@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use MessageCenter\MessageCenter;
 use MessageCenter\IEventListener;
 use Tests\MessageCenter\EmailSender;
-use Tests\MessageCenter\EventCHannels;
+use Tests\MessageCenter\EventChannels;
 
 class MessageCenterTest extends TestCase 
 {
