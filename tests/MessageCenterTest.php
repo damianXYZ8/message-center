@@ -2,10 +2,10 @@
 namespace Tests\MessageCenter;
 
 use PHPUnit\Framework\TestCase;
-use MessageCenter\MessageCenter;
-use MessageCenter\IEventListener;
-use Tests\MessageCenter\EmailSender;
-use Tests\MessageCenter\EventChannels;
+use MessageCenter\{MessageCenter, IEventListener};
+use ExampleApp\{UserManager, User, EventChannels};
+use ExampleApp\Listeners\{ConsoleEcho, EmailSender};
+
 
 class MessageCenterTest extends TestCase 
 {
@@ -114,6 +114,37 @@ class MessageCenterTest extends TestCase
         $mc->removeEventListener($emailSender);
 
         $this->assertEquals(0, count($mc->getEventListeners()));
+    }
+
+    /**
+     * @test
+     */
+    public function itAddsUserAndSendsEventThenRemoveUserAndSendsEvent()
+    {
+        $userManager = new UserManager(MessageCenter::instance(), EventChannels::CH_USER_MANAGER);
+
+        $consoleEcho = new ConsoleEcho();
+        $emailSender = new EmailSender();
+        // adding EchoConsole and EmailSender as listeners from EventChannels::CH_USER_MANAGER events
+        // UserManager does not know who handles its events...
+        // event sources and event listeners are decoupled 
+        MessageCenter::instance()->addEventListener($consoleEcho, EventChannels::CH_USER_MANAGER)
+                                 ->addEventListener($emailSender, EventChannels::CH_USER_MANAGER);
+        
+        $user = new User('Alex', 'Bradley', 'alexbradley@sample.com');
+        
+        $outputString = "ExampleApp\Listeners\ConsoleEcho I've handled event named: evAddUser\n";
+        $outputString .= "ExampleApp\Listeners\EmailSender I've handled event named: evAddUser\n";
+        $this->expectOutputString($outputString);
+        $userManager->add($user);
+
+        \ob_clean();
+        $outputString = "ExampleApp\Listeners\ConsoleEcho I've handled event named: evRemoveUser\n";
+        $outputString .= "ExampleApp\Listeners\EmailSender I've handled event named: evRemoveUser\n";
+        $this->expectOutputString($outputString);
+        $userManager->remove($user);
+
+        MessageCenter::instance()->removeAllChannels();
     }
 
 }

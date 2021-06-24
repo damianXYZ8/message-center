@@ -4,10 +4,8 @@ namespace MessageCenter;
 /**
  * Description of event
  *
- * @author dbistram
+ * @author Damian Bistram
  */
-
- use MessageCenter\IEvent;
 
 class Event implements IEvent
 {
@@ -16,10 +14,12 @@ class Event implements IEvent
     private $channelName;
     private $name;
     private $data;
-
    
-    public function __construct(string $name, string $channelName)
+    public function __construct(string $name, string $channelName = null)
     {
+        if (!isset($channelName)) {
+            $channelName = IEventSource::C_DEFAULT_CHANNEL;
+        }
         $this->channelName = $channelName;
         $this->timestamp =  time();
         $this->name = $name;

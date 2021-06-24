@@ -6,7 +6,6 @@ namespace MessageCenter;
  *
  * @author Damian Bistram
  */
-use MessageCenter\EventSource;
 
 class MessageCenter implements IMessageCenter
 {
@@ -24,14 +23,14 @@ class MessageCenter implements IMessageCenter
         $this->dispatchEvent($event);
     }
 
-    public function addEventListener(IEventListener $listener, string $channelName = null): void
+    public function addEventListener(IEventListener $listener, string $channelName = null): IEventSource
     {
-        $this->eventSource->addEventListener($listener, $channelName);
+        return $this->eventSource->addEventListener($listener, $channelName);
     }
     
-    public function removeEventListener(IEventListener $listener, string $channelName = null): void
+    public function removeEventListener(IEventListener $listener, string $channelName = null): IEventSource
     {
-        $this->eventSource->removeEventListener($listener, $channelName);
+        return $this->eventSource->removeEventListener($listener, $channelName);
     }
     
     public function dispatchEvent(IEvent $event): void

@@ -6,12 +6,9 @@ namespace MessageCenter;
  *
  * @author Damian Bistram
  */
-    
-use MessageCenter\IEventSource;
 
 class EventSource implements IEventSource
 {
-    const C_DEFAULT_CHANNEL = 'CH_EventSource_Default';
 /**
  * Variable for event listeners. It is build as two dimentional array.
  * Array keys are channel names and array items values are arrays with lists of listeners for that channel
@@ -23,16 +20,18 @@ class EventSource implements IEventSource
     {
     }
 
-    public function addEventListener(IEventListener $listener, string $channelName = null): void
+    public function addEventListener(IEventListener $listener, string $channelName = null): IEventSource
     {
         if (!isset($channelName)) {
             $channelName = self::C_DEFAULT_CHANNEL;
         }
         $this->validateListenerRegistration($listener, $channelName);
         $this->listeners[$channelName][] = $listener;
+
+        return $this;
     }
     
-    public function removeEventListener(IEventListener $listener, string $channelName = null): void
+    public function removeEventListener(IEventListener $listener, string $channelName = null): IEventSource
     {
         if (!isset($channelName)) {
             $channelName = self::C_DEFAULT_CHANNEL;
@@ -46,14 +45,18 @@ class EventSource implements IEventSource
         }
 
         array_splice($this->listeners[$channelName], $i, 1);
+
+        return $this;
     }
     
     public function dispatchEvent(IEvent $event): void
     {
-        if (false !== array_key_exists($event->getChannelName(), $this->listeners)) {
-            foreach ($this->listeners[$event->getChannelName()] as $key => $listener) {
-                $listener->handleEvent($event);
-            }
+        if (false == array_key_exists($event->getChannelName(), $this->listeners)) {
+            throw new \Exception('Cannot find a channel name: '.$event->getChannelName().' for the event!');
+        }
+
+        foreach ($this->listeners[$event->getChannelName()] as $key => $listener) {
+            $listener->handleEvent($event);
         }
     }
 

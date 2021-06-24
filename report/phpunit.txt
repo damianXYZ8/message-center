@@ -6,4 +6,5 @@ Message Center (Tests\MessageCenter\MessageCenter)
  [x] It adds listeners to two channels and then removes all listeners from channel
  [x] It adds listeners to default channel
  [x] It removes listeners from default channel
+ [x] It adds user and sends event then remove user and sends event
 
