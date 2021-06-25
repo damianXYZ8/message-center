@@ -1,4 +1,5 @@
 # message-center
+[![Build Status](https://github.com/damianXYZ8/message-center/workflows/Coding%20Standards/badge.svg)](https://github.com/damianXYZ8/message-center/actions)
 [![Build Status](https://github.com/damianXYZ8/message-center/workflows/Continuous%20Integration/badge.svg)](https://github.com/damianXYZ8/message-center/actions)
 
 MessageCenter is a simple mechanism that provides a simple event system.
