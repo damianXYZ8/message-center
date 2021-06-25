@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Coding Standards
 
 on:
   push:
@@ -7,9 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  coding-standards:
+    name: "Coding Standards"
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.3"
 
     steps:
     - uses: actions/checkout@v2
@@ -32,8 +37,6 @@ jobs:
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    - name: Run static analyser suite
+    - name: Run coding standards suite
       run: composer run-script code-sniffer
 
-    - name: Run test suite
-      run: composer run-script test
