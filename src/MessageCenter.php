@@ -4,7 +4,7 @@ namespace MessageCenter;
 /**
  * Description of MessageCenter
  *
- * @author Damian Bistram
+ * @author Damian Bistram <info@bistram.pl>
  */
 
 class MessageCenter implements IMessageCenter

@@ -3,7 +3,7 @@ namespace MessageCenter;
 
 /**
  *
- * @author Damian Bistram;
+ * @author Damian Bistram <info@bistram.pl>
  */
  
 interface IMessageCenter extends IEventListener, IEventSource

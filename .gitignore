@@ -52,4 +52,7 @@
 
 # Embedded web-server pid file
 /.web-server-pid
-.phpunit.result.cache
+/.phpunit.result.cache
+
+/.vscode/
+/.vscode/*
