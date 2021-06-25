@@ -5,7 +5,7 @@ namespace MessageCenter;
  * Description of event
  *
  * @author Damian Bistram <info@bistram.pl>
- */ 
+ */
 
 class Event implements IEvent
 {
