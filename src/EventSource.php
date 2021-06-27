@@ -4,7 +4,7 @@ namespace MessageCenter;
 /**
  * Description of EventSource
  *
- * @author Damian Bistram
+ * @author Damian Bistram <info@bistram.pl>
  */
 
 class EventSource implements IEventSource

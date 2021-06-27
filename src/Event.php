@@ -45,7 +45,7 @@ class Event implements IEvent
         return $this->data;
     }
 
-    public function setData(&$data)
+    public function setData($data)
     {
         $this->data = $data;
     }

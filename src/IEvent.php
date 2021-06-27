@@ -3,7 +3,7 @@ namespace MessageCenter;
 
 /**
  *
- * @author Damian Bistram
+ * @author Damian Bistram <info@bistram.pl>
  */
 
 interface IEvent
@@ -12,5 +12,5 @@ interface IEvent
     public function getChannelName(): string;
     public function getTimeStamp(): int;
     public function getData();
-    public function setData(&$data);
+    public function setData($data);
 }
