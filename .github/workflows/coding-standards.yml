@@ -38,5 +38,8 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run coding standards suite
+      run: composer run-script code-corrector
+
+    - name: Run coding standards suite
       run: composer run-script code-sniffer
 

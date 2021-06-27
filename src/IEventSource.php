@@ -4,7 +4,7 @@ namespace MessageCenter;
 /**
  *
  * @author Damian Bistram <info@bistram.pl>
- * 
+ *
  */
 interface IEventSource
 {

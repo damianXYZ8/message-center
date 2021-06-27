@@ -29,6 +29,7 @@
         }
     },
     "scripts": {
+        "code-corrector": "./vendor/bin/phpcbf",
         "code-sniffer": "./vendor/bin/phpcs",
         "test": "phpunit",
         "example": "php ./examples/main.php"
