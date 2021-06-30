@@ -31,7 +31,7 @@
     "scripts": {
         "code-corrector": "./vendor/bin/phpcbf",
         "code-sniffer": "./vendor/bin/phpcs",
-        "test": "phpunit",
+        "test": "./vendor/bin/phpunit",
         "example": "php ./examples/main.php"
     } 
 }
